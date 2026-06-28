@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lestudio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+</head>
+<body>
+    <div class="trait">
+        <div class="navbar">
+      <h1>lestudio</h1>
+      <button onclick="Deposerannonce()"><i class="fa-regular fa-square-plus"> </i> Déposer une annonce</button>
+      <div class="david">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input  type="text" id="recherche" placeholder="Rechercher sur lestudio" oninput="afficherObjets()">
+      </div>
+       <div class="icones">
+        <a href="favoris.html"><i class="fa-solid fa-heart"></i></a>
+        <i class="fa-solid fa-comment"></i>
+        <i class="fa-solid fa-user"></i>
+       </div>
+      <button onclick="centredecontrol()">centre de control</button>
+    </div>
+    <div class="categorie-lien">
+        <a href="vetement.html">Vêtements</a>
+        <a href="electronique.html">Electronique</a>
+        <a href="alimentation.html">Alimentation</a>
+        <a href="maison.html">Maison</a>
+    </div>
+    </div>
+
+    <button id="deconnexionBtn" onclick="déconnexion()">Se déconnecter</button>
+    <h2>Objets disponibles</h2>
+    <ul id="listeObjets"></ul>
+
+    <div id="produitDetail" class="produit-detail hidden">
+        <div class="detail-contenu">
+            <div class="detail-text"></div>
+            <div class="detail-image"></div>
+        </div>
+        <button class="close-detail" onclick="masquerDetail()">Fermer</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

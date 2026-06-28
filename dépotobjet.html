@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Déposer une annonce</title>
+
+
+</head>
+<body>
+    <div class="navbar">
+        <h1>lestudio</h1> 
+        <h2><a href="index.html">Quitter</a></h2>
+    </div>
+    <h2>Déposer une annonce</h2>
+    <div class="form-conteneur">
+        <input type="text" id="nomObjet" placeholder="Nom de l'objet">
+        <input type="text" id="imageObjet" placeholder="Lien de l'image">
+        <input type="text" id="descriptionObjet" placeholder="Description de l'objet">
+        <input type="text" id="prixObjet" placeholder="Prix">
+        <input type="text" id="localisationObjet" placeholder="Localisation">
+        <input type="email" id="emailVendeur" placeholder="Email du vendeur">
+        <input type="tel" id="telephoneVendeur" placeholder="Téléphone du vendeur">
+        <label for="categorie">Catégorie du produit :</label>
+        <select id="categorie">
+            <option value="Electronique">Électronique</option>
+            <option value="Vetements">Vêtements</option>
+            <option value="Alimentation">Alimentation</option>
+            <option value="Maison">Maison</option>
+        </select>
+        
+        <button id="ajouterObjetBtn" onclick="ajouterObjet()">Ajouter</button>
+    </div>
+    <script src="script.js"></script>
+
+
+
+    
+</body>
+</html>

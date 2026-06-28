@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+     <!-- Lie le fichier CSS pour le design du site -->
+    <title>le centre de control</title>
+</head>
+<body>
+    <div class="navbar">
+        <h1>lestudio</h1>
+        <h2><a href="index.html"> Quitter</a></h2>
+        <!-- Lien qui permet d’accéder à la page d'accueil -->
+    </div>
+    <h2> centre de control</h2>
+    <ul id="listeObjets"></ul>
+
+    <section id="produitDetail" class="produit-detail hidden">
+        <div class="detail-contenu">
+            <div class="detail-image"></div>
+            <div class="detail-text"></div>
+        </div>
+        <button class="close-detail" onclick="masquerDetail()">Fermer</button>
+    </section>
+
+    <!-- model d'édition de produit, caché tant qu'il n'est pas ouvert -->
+    <div id="editProductModal" class="model hidden">
+        <div class="modelcontenu">
+            <button id="closeEditModal" class="fermermodel" aria-label="Fermer la fenêtre d’édition">×</button>
+            <h3>Modifier un produit</h3>
+            <label for="editProductSelect">Choisir un produit</label>
+            <select id="editProductSelect"></select>
+            <label for="editNom">Nom</label>
+            <input type="text" id="editNom" placeholder="Nom du produit">
+            <label for="editImage">URL image</label>
+            <input type="text" id="editImage" placeholder="https://...">
+            <label for="editDescription">Description</label>
+            <textarea id="editDescription" rows="4" placeholder="Description du produit"></textarea>
+            <label for="editPrix">Prix</label>
+            <input type="text" id="editPrix" placeholder="Prix ">
+            <label for="editLocalisation">Localisation</label>
+            <input type="text" id="editLocalisation" placeholder="Ville ou région">
+            <label for="editEmail">Email vendeur</label>
+            <input type="text" id="editEmail" placeholder="email@example.com">
+            <label for="editTelephone">Téléphone vendeur</label>
+            <input type="text" id="editTelephone" placeholder="Téléphone">
+            <label for="categorie">Catégorie du produit :</label>
+            <select id="categorie">
+               <option value="Electronique">Électronique</option>
+               <option value="Vetements">Vêtements</option>
+               <option value="Alimentation">Alimentation</option>
+               <option value="Maison">Maison</option>
+            </select>
+
+            <button id="saveProductChanges" class="sauvegarderBtn">Enregistrer les changements</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+       afficherObjets();
+    </script>
+</body>
+</html>

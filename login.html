@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulaire de connexion </title>
+    
+</head>
+<body>
+    <h1>Connexion</h1>
+    <input type="text" id="nomutilisateur" placeholder="Nom d'utilisateur">
+    <input type="password" id="motpasse" placeholder="Mot de passe">
+    <button onclick="login()">Se connecter </button>
+    <p id="message"></p>
+    <script>
+        function login() {
+            let user = document.getElementById("nomutilisateur").value;
+            let pass = document.getElementById("motpasse").value;
+
+            if (user === "admin" && pass === "1234") {
+                localStorage.setItem("connecte", "oui");
+
+
+                window.location.href = "index.html";
+            } else {
+                document.getElementById("message").textContent = "Erreur de connexion";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vêtements - lestudio</title>
+    
+<body>
+    <div class="navbar">
+        <h1>lestudio</h1>
+        <h2> <a href="index.html">Quitter</a></h2>
+    </div>
+    <h2>Vêtements</h2>
+    <p>Produits de la catégorie Vêtements uniquement.</p>
+    <ul id="listeObjets"></ul>
+
+    <div id="produitDetail" class="produit-detail hidden">
+        <div class="detail-contenu">
+            <div class="detail-image"></div>
+            <div class="detail-text"></div>
+        </div>
+        <button class="close-detail" onclick="masquerDetail()">Fermer</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        afficherObjets('Vetements');
+    </script>
+</body>
+</html>
