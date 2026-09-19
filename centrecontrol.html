@@ -27,7 +27,7 @@
     <!-- model d'édition de produit, caché tant qu'il n'est pas ouvert -->
     <div id="editProductModal" class="model hidden">
         <div class="modelcontenu">
-            <button id="closeEditModal" class="fermermodel" aria-label="Fermer la fenêtre d’édition">×</button>
+            <button id="closeEditModal" class="fermermodel">×</button>
             <h3>Modifier un produit</h3>
             <label for="editProductSelect">Choisir un produit</label>
             <select id="editProductSelect"></select>
@@ -39,6 +39,8 @@
             <textarea id="editDescription" rows="4" placeholder="Description du produit"></textarea>
             <label for="editPrix">Prix</label>
             <input type="text" id="editPrix" placeholder="Prix ">
+            <label for="edittroc">troc</label>
+            <input type="text" id="edittroc" placeholder="Possibilité de troc contre">
             <label for="editLocalisation">Localisation</label>
             <input type="text" id="editLocalisation" placeholder="Ville ou région">
             <label for="editEmail">Email vendeur</label>

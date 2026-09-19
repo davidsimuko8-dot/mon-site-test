@@ -8,7 +8,7 @@ if (estConnecte !== "oui") {
 // Récupère les objets sauvegardés dans le localStorage
 // Si rien n'existe, on initialise un tableau vide
 let objets = JSON.parse(localStorage.getItem("objets")) || [];
-let editIndex = null; // index du produit actuellement sélectionné pour modification
+let editIndex = null; // l'indice du produit actuellement sélectionné pour modification sera dans cette variable
 
 // Fonction pour ajouter un nouvel objet
 function ajouterObjet() {
@@ -17,13 +17,14 @@ function ajouterObjet() {
     let imageInput = document.getElementById("imageObjet");
     let descriptionInput = document.getElementById("descriptionObjet");
     let prixInput = document.getElementById("prixObjet");
+    let torcInput = document.getElementById("torcObjet");
     let localisationInput = document.getElementById("localisationObjet");
     let emailInput = document.getElementById("emailVendeur");
     let telephoneInput = document.getElementById("telephoneVendeur");
     let categorieInput = document.getElementById("categorie");
 
     // Vérifie si les champs essentiels sont vides
-    if (nomInput.value === "" || imageInput.value === "" || descriptionInput.value === "" || prixInput.value === "" || localisationInput.value === "" || emailInput.value === "" || telephoneInput.value === "") {
+    if (nomInput.value === "" || imageInput.value === "" || descriptionInput.value === "" || prixInput.value === "" || torcInput.value === "" || localisationInput.value === "" || emailInput.value === "" || telephoneInput.value === "") {
         alert("Remplir tous les champs !");
         return;
     }
@@ -33,6 +34,7 @@ function ajouterObjet() {
         image: imageInput.value.trim(),
         description: descriptionInput.value.trim(),
         prix: prixInput.value.trim(),
+        torc: torcInput.value.trim(),
         localisation: localisationInput.value.trim(),
         emailVendeur: emailInput.value.trim(),
         telephoneVendeur: telephoneInput.value.trim(),
@@ -48,6 +50,7 @@ function ajouterObjet() {
     imageInput.value = "";
     descriptionInput.value = "";
     prixInput.value = "";
+    torcInput.value = "";
     localisationInput.value = "";
     emailInput.value = "";
     telephoneInput.value = "";
@@ -104,6 +107,7 @@ function creerCarteObjet(objet, index) {
     details.innerHTML = `
         <p>${objet.description || "aucune description"}</p>
         <p><strong>Prix :</strong> ${objet.prix ? objet.prix + " $" : "N/A"}</p>
+        <p><strong>troc :</strong> ${objet.troc || "N/A"}</p>
         <p><strong>Localisation :</strong> ${objet.localisation || "N/A"}</p>
         <p><strong>Catégorie :</strong> ${objet.categorie || "N/A"}</p>
         <p><strong>Vendeur :</strong> ${objet.emailVendeur || "N/A"} / ${objet.telephoneVendeur || "N/A"}</p>
@@ -113,9 +117,9 @@ function creerCarteObjet(objet, index) {
     divButtons.className = "buttons";
     divButtons.appendChild(boutonLike);
 
-    const isCentreControlPage = window.location.pathname.endsWith("centrecontrol.html");
+    const CentreControlPage = window.location.pathname.endsWith("centrecontrol.html");
 
-    if (isCentreControlPage) {
+    if (CentreControlPage) {
         divButtons.appendChild(bouton);
         li.appendChild(editBtn);
     }
@@ -156,13 +160,14 @@ function remplirFormulaireEdition(index) {
         return;
     }
 
-    let objet = objets[index];
+    let objet = objets[index]; //   récupère l’élément du tableau objets à la position index et le stocke dans une variable locale objet
     editIndex = index;
 
     document.getElementById("editNom").value = objet.nom || "";
     document.getElementById("editImage").value = objet.image || "";
     document.getElementById("editDescription").value = objet.description || "";
     document.getElementById("editPrix").value = objet.prix || "";
+    document.getElementById("edittroc").value = objet.troc || "";
     document.getElementById("editLocalisation").value = objet.localisation || "";
     document.getElementById("editEmail").value = objet.emailVendeur || "";
     document.getElementById("editTelephone").value = objet.telephoneVendeur || "";
@@ -204,6 +209,7 @@ function sauverProduitModifie() {
     objet.image = document.getElementById("editImage").value.trim() || objet.image;
     objet.description = document.getElementById("editDescription").value.trim() || objet.description;
     objet.prix = document.getElementById("editPrix").value.trim() || objet.prix;
+    objet.troc = document.getElementById("edittroc").value.trim() || objet.troc;
     objet.localisation = document.getElementById("editLocalisation").value.trim() || objet.localisation;
     objet.emailVendeur = document.getElementById("editEmail").value.trim() || objet.emailVendeur;
     objet.telephoneVendeur = document.getElementById("editTelephone").value.trim() || objet.telephoneVendeur;
@@ -263,6 +269,8 @@ function afficherDetail(objet) {
         <p>${objet.description || "aucune description disponible"}</p>
       <!-- Affiche le prix du produit Si le prix existe → ajoute "$" Sinon affiche "N/A" -->
         <p><strong>Prix :</strong> ${objet.prix ? objet.prix + "$" : "N/A"}</p>
+      <!-- Affiche la possibilité de troc contre -->
+        <p><strong>Troc :</strong> ${objet.troc || "N/A"}</p>
       <!-- Affiche la localisation du produit Si elle n'existe pas → affiche "N/A" -->
         <p><strong>Localisation :</strong> ${objet.localisation || "N/A"}</p>
       <!-- Affiche la catégorie du produit Si elle n'existe pas → affiche "N/A" -->
@@ -299,7 +307,7 @@ function supprimerObjet(index) {
 // Fonction pour sauvegarderBtn les objets dans le localStorage
 function sauvegarderObjets() {
     localStorage.setItem("objets", JSON.stringify(objets));
-}
+} 
 
 // Ajoute ou retire un like pour un objet
 function ajouterLike(index) {
